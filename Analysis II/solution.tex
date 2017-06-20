@@ -1,0 +1,164 @@
+\def \bookname {Analysis II}
+
+\documentclass[13pt,a4paper]{report}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsthm}
+\usepackage{amsmath}
+
+\theoremstyle{definition}
+
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{exercise}{Exercise}[section]
+\newtheorem{solution}{Solution}[section]
+
+\begin{document}
+\chapter{Metric spaces}
+\section{Definitions and examples}
+
+\begin{lemma}\label{convergence_lemma_1}
+Let $(x_n)^\infty_{n=m}$ be a sequence of real numbers, and let $x$ be another real number. Then
+$(x_n)^\infty_{n=m}$ converges to $x$ if and only if $\lim_{n \rightarrow \infty}
+d(x_n, x) = 0$.
+\end{lemma}
+
+\begin{exercise}
+Prove Lemma \ref{convergence_lemma_1}.
+\end{exercise}
+
+\begin{solution}
+By definition of limit, for any $\varepsilon > 0$ there exists an $N \ge m$ such that
+$d(x_n, x) = |x_n - x| < \varepsilon$ for all $n \ge N$. This is exactly the definition
+of convergence in previous book.
+\end{solution}
+
+\begin{exercise}
+Show that the real line with the metric $d(x, y) := |x - y|$ is indeed a metric space.
+(Hint: you may wish to review your proof of Proposition 4.3.3.)
+\end{exercise}
+
+\begin{solution} We verify the four properties listed in Definition 1.1.2
+\begin{itemize}
+    \item[1.] $d(x, x) = |x - x| = 0$.
+    \item[2.] For all $x \ne y$, $d(x, y) = |x - y| > 0$.
+    \item[3.] For all $x$ and $y$, $d(x, y) = |x - y| = |y - x| = d(y, x)$.
+    \item[4.] For all $x, y$ and $z$, $d(x, y) = |x - y| = |x - z + z - y| \le
+    |x - z| + |z - y| = d(x, z) + d(z, y)$.
+\end{itemize}
+\end{solution}
+
+\begin{exercise}
+Let $X$ be a set, and let $d: X \times X \rightarrow [0, \infty)$ be a function.
+\begin{itemize}
+    \item[(a)] Give an example of a pair $(X, d)$ which obeys axioms (bcd) of Definition 1.1.2,
+    but not (a). (Hint: modify the discrete metric.)
+    \item[(b)] Give an example of a pair $(X, d)$ which obeys axioms (acd) of Definition 1.1.2,
+    but not (b).
+    \item[(c)] Give an example of a pair $(X, d)$ which obeys axioms (abd) of Definition 1.1.2,
+    but not (c).
+    \item[(d)] Give an example of a pair $(X, d)$ which obeys axioms (abc) of Definition 1.1.2,
+    but not (d). (Hint: try examples where $X$ is a finite set.)
+\end{itemize}
+\end{exercise}
+
+\begin{solution} In general, setting $X$ to be a finite set and defining $d$ by specifying values
+for all pairs of elements can produce a lot of metric spaces for each of the problem. For this
+exercise to be more challenging, we try to avoid abusing this approach.
+\begin{itemize}
+    \item[(a)] Let $d$ be the metric such that for all $x, y \in X$, $d(x, y) = 1$. This is similar
+    to the discrete metric except that $d(x, x) = 1$ so it does not obey (a).
+    \item[(b)] Similar to (a), we can as well set $d(x, y) = 0$ for all $x, y \in X$.
+    \item[(c)]
+    \item[(d)] Let $X = \{ 1, 2, 3 \}$ and define $d(x, x) = 0$ for $x \in X$, $d(1, 2) = d(2, 1)
+    = 1$, $d(2, 3) = d(3, 2) = 1$ and finally $d(1, 3) = d(3, 1) = 3$.
+\end{itemize}
+\end{solution}
+
+\begin{exercise}
+Show that the pair $(Y, d|_{Y \times Y})$ defined in Example 1.1.5 is indeed a metric space.
+\end{exercise}
+
+\begin{solution}
+Each of the four properties remains after $d$ is restricted to $Y \subset X$ and is vacuous to
+verify.
+\end{solution}
+
+\begin{exercise}\label{exercise_1_1_5}
+Let $N \ge 1$, and let $a_1, a_2, \ldots, a_n$ and $b_1, b_2, \ldots, b_n$ be real numbers. Verify
+the identity
+    \begin{equation*}
+    \Bigg(\sum_{i = 1}^n a_i b_i\Bigg)^2 + \frac{1}{2} \sum_{i = 1}^n \sum_{j = 1}^n
+    (a_i b_j - a_j b_i)^2 = \Bigg(\sum_{i = 1}^n a_i^2 \Bigg) \Bigg(\sum_{j = 1}^n b_j^2 \Bigg)
+    \end{equation*}
+and conclude the \it{Cauchy-Schwarz inequality}
+    \begin{equation*}
+    \Bigg|\sum_{i = 1}^n a_i b_i \Bigg| \le \Bigg(\sum_{i = 1}^n a_i^2\Bigg)^{\frac{1}{2}}
+    \Bigg(\sum_{j = 1}^n b_j^2\Bigg)^{\frac{1}{2}}
+    \tag{(1.3)}
+    \end{equation*}
+Then use the Cauchy-Schwarz inequality to prove the \it{triangle inequality}
+    \begin{equation*}
+    \Bigg(\sum_{i = 1}^n (a_i + b_i)^2\Bigg)^{\frac{1}{2}} \le
+    \Bigg(\sum_{i = 1}^n a_i^2\Bigg)^{\frac{1}{2}} +
+    \Bigg(\sum_{j = 1}^n b_j^2\Bigg)^{\frac{1}{2}}
+    \end{equation*}
+\end{exercise}
+
+\begin{solution}
+\end{solution}
+
+\begin{exercise}
+Show that $({\bf R}^n, d_{l^2})$ in Example 1.1.6 is indeed a metric space. (Hint: use Exercise
+\ref{exercise_1_1_5}.)
+\end{exercise}
+
+\begin{exercise}
+Show that the pair $({\bf R}^n, d_{l^1})$ in Example 1.1.7 is indeed a metric space.
+\end{exercise}
+
+\begin{exercise}
+Prove the two inequalities in (1.1). (For the first inequality, square both sides. For the second
+inequality, use Exercise \ref{exercise_1_1_5}.)
+\end{exercise}
+
+\begin{exercise}
+Show that the pair $({\bf R}^n, d_{l^\infty})$ in Example 1.1.9 is indeed a metric space.
+\end{exercise}
+
+\begin{exercise}
+Prove the two inequalities in (1.2).
+\end{exercise}
+
+\begin{exercise}
+Show that the discrete metric ${\bf R}^n, d_{\text{disc}}$ in Example 1.1.11 is indeed a metric
+space.
+\end{exercise}
+
+\begin{exercise}
+Prove Proposition 1.1.18.
+\end{exercise}
+
+\begin{exercise}
+Prove Proposition 1.1.19.
+\end{exercise}
+
+\begin{exercise}
+Prove Proposition 1.1.20. (Hint: modify the proof of Proposition 6.1.7.)
+\end{exercise}
+
+\begin{exercise}
+Let
+    \begin{equation*}
+    X := \Bigg\{ (a_n)_{n = 0}^\infty : \sum_{n = 0}^\infty |a_n| < \infty \Bigg\}
+    \end{equation*}
+be the space of absolutely convergent sequences. Define the $l^1$ and $l^\infty$ metrics on this
+space by
+    \begin{equation*}
+
+    \end{equation*}
+\end{exercise}
+
+\begin{exercise}
+\end{exercise}
+
+\end{document}
